@@ -152,3 +152,4 @@
 /Users/alexanderek/RiderProjects/Labb1_LINQ/Labb1_LINQ/obj/Debug/net9.0/Labb1_LINQ.pdb
 /Users/alexanderek/RiderProjects/Labb1_LINQ/Labb1_LINQ/obj/Debug/net9.0/Labb1_LINQ.genruntimeconfig.cache
 /Users/alexanderek/RiderProjects/Labb1_LINQ/Labb1_LINQ/obj/Debug/net9.0/ref/Labb1_LINQ.dll
+/Users/alexanderek/RiderProjects/Labb1_LINQ/Labb1_LINQ/obj/Debug/net9.0/Labb1_LINQ.sourcelink.json
