@@ -15,8 +15,8 @@ public class DataHelper
     // Uppgift 1
     public void GetElectronics()
     {
-        var electronics = _context.Products
-            .Include(p => p.Category) // viktigt!
+        var electronics = _context.Products 
+            .Include(p => p.Category) 
             .Where(p => p.Category.Name == "Electronics")
             .OrderByDescending(p => p.Price)
             .ToList();
@@ -114,13 +114,26 @@ public class DataHelper
         var ordersOver1000 = _context.Orders
             .Include(o => o.Customer)
             .Include(o => o.OrderDetails)
-                .ThenInclude(od => od.Product)
+            .ThenInclude(od => od.Product)
+            .ToList()
             .Where(o => o.OrderDetails.Sum(od => od.Quantity * od.Product.Price) > 1000)
             .ToList();
 
         foreach (var order in ordersOver1000)
         {
-            Console.WriteLine($"Order ID: {order.OrderId}, Kund: {order.Customer.Name}, Totalbelopp: {order.OrderDetails.Sum(od => od.Quantity * od.Product.Price):C}");
+            var total = order.OrderDetails.Sum(od => od.Quantity * od.Product.Price);
+
+            Console.WriteLine($"Order ID: {order.OrderId}");
+            Console.WriteLine($"Kund: {order.Customer.Name}");
+            Console.WriteLine($"Totalbelopp: {total:C}");
+            Console.WriteLine("Orderdetaljer:");
+
+            foreach (var detail in order.OrderDetails)
+            {
+                Console.WriteLine($"  - Produkt: {detail.Product.Name}, Antal: {detail.Quantity}, Pris: {detail.Product.Price:C}, Delbelopp: {detail.Quantity * detail.Product.Price:C}");
+            }
+
+            Console.WriteLine(new string('-', 50));
         }
     }
 }
